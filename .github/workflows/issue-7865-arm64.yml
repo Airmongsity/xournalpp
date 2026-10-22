@@ -1,0 +1,18 @@
+name: Build ARM64 package for issue 7865
+on:
+  push:
+    branches: [build/issue-7865-arm64]
+permissions:
+  contents: read
+jobs:
+  package:
+    uses: ./.github/workflows/make-installer-windows.yml
+    with:
+      runner: windows-11-arm
+      displayed_name: Windows ARM64 issue 7865
+      msystem: clangarm64
+      msys_package_env: clang-aarch64
+      publish_portable_version: true
+      head_sha: 206c3e6a7cf588c97ad18de000f433757cd00d22
+      build_type: RelWithDebInfo
+      artifact_version_suffix: -issue-7865
